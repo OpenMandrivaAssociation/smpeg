@@ -1,7 +1,7 @@
 %define	name	smpeg
 %define	Summary	SDL MPEG Library
 %define	version	0.4.4
-%define release	%mkrel 33
+%define release	%mkrel 34
 %define	section	Multimedia/Video
 %define	lib_name_orig	libsmpeg
 %define	lib_major	0.4
@@ -19,7 +19,7 @@ Patch2:		smpeg-0.4.4-fix-m4.patch
 Patch3:		smpeg-0.4.4-fix-underquoted-calls.patch
 Patch4:		smpeg-0.4.4-fix-header.patch
 Group:		Video
-URL:		http://www.lokigames.com/development/smpeg.php3
+URL:		http://icculus.org/smpeg/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	esound-devel gtk+-devel SDL-devel Mesa-common-devel automake1.4
 
