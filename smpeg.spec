@@ -94,7 +94,6 @@ Icon=video_section
 Terminal=false
 Type=Application
 Categories=X-MandrivaLinux-Multimedia-Video;AudioVideo;Video;Player
-Encoding=UTF-8
 EOF
 
 
