@@ -93,7 +93,7 @@ Exec=%{_bindir}/gtv
 Icon=video_section
 Terminal=false
 Type=Application
-Categories=X-MandrivaLinux-Multimedia-Video;AudioVideo;Video;Player
+Categories=X-MandrivaLinux-Multimedia-Video;AudioVideo;Video;Player;
 EOF
 
 
