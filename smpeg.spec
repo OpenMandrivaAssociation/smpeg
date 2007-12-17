@@ -20,7 +20,6 @@ Patch3:		smpeg-0.4.4-fix-underquoted-calls.patch
 Patch4:		smpeg-0.4.4-fix-header.patch
 Group:		Video
 URL:		http://icculus.org/smpeg/
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	esound-devel gtk+-devel SDL-devel Mesa-common-devel automake1.4
 
 %description
