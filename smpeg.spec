@@ -1,7 +1,6 @@
 %define	name	smpeg
 %define	Summary	SDL MPEG Library
 %define	version	0.4.4
-%define release	%mkrel 34
 %define	section	Multimedia/Video
 %define	lib_name_orig	libsmpeg
 %define	lib_major	0.4
@@ -10,7 +9,7 @@
 Name:		%{name}
 Summary:	%{Summary}
 Version:	%{version}
-Release:	%{release}
+Release:	%mkrel 35
 License:	LGPL
 Source0:	%{name}-%{version}.tar.bz2
 Patch0:		smpeg-remove-rpath-in-smpeg-config.patch
