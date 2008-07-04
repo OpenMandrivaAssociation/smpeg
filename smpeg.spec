@@ -9,7 +9,7 @@
 Name:		%{name}
 Summary:	%{Summary}
 Version:	%{version}
-Release:	%mkrel 36
+Release:	%mkrel 37
 License:	LGPL
 Source0:	%{name}-%{version}.tar.bz2
 Patch0:		smpeg-remove-rpath-in-smpeg-config.patch
