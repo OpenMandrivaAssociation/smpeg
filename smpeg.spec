@@ -1,26 +1,29 @@
-%define	name	smpeg
-%define	Summary	SDL MPEG Library
-%define	version	0.4.4
-%define	section	Multimedia/Video
 %define	lib_name_orig	libsmpeg
 %define	lib_major	0.4
 %define	lib_name	%mklibname %name %{lib_major}
 
-Name:		%{name}
-Summary:	%{Summary}
-Version:	%{version}
+Summary:	SDL MPEG Library
+Name:		smpeg
+Version:	0.4.4
 Release:	%mkrel 37
 License:	LGPL
+Group:		Video
+URL:		http://icculus.org/smpeg/
 Source0:	%{name}-%{version}.tar.bz2
 Patch0:		smpeg-remove-rpath-in-smpeg-config.patch
 Patch1:		smpeg-0.4.4-libsupc++.patch
 Patch2:		smpeg-0.4.4-fix-m4.patch
 Patch3:		smpeg-0.4.4-fix-underquoted-calls.patch
 Patch4:		smpeg-0.4.4-fix-header.patch
-Group:		Video
-URL:		http://icculus.org/smpeg/
+BuildRequires:	automake1.4
+BuildRequires:	esound-devel
+BuildRequires:	gtk+-devel
+BuildRequires:	Mesa-common-devel
+BuildRequires:	ncurses-devel
+BuildRequires:	SDL-devel
+BuildRequires:	slang-devel
+BuildRequires:	zlib-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:	esound-devel gtk+-devel SDL-devel Mesa-common-devel automake1.4
 
 %description
 SMPEG is based on UC Berkeley's mpeg_play software MPEG decoder and SPLAY,
@@ -62,6 +65,7 @@ Provides:	%{lib_name}-player = %{version}-%{release}
 This package contains a MPEG player based on %{name}.
 
 %prep
+
 %setup -q
 %patch0 -p0
 %patch1 -p1 -b .libsupc++
@@ -78,10 +82,13 @@ perl -pi -e 's/finalize_rpath="\$rpath"/finalize_rpath=/' libtool
 make
 
 %install
-rm -rf $RPM_BUILD_ROOT
-#make prefix=$RPM_BUILD_ROOT/%{_prefix} install
+rm -rf %{buildroot}
+
+#make prefix=%{buildroot}/%{_prefix} install
+
 %makeinstall
-%multiarch_binaries $RPM_BUILD_ROOT%{_bindir}/smpeg-config
+
+%multiarch_binaries %{buildroot}%{_bindir}/smpeg-config
 
 mkdir -p %{buildroot}%{_datadir}/applications
 cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
@@ -95,11 +102,6 @@ Type=Application
 Categories=X-MandrivaLinux-Multimedia-Video;AudioVideo;Video;Player;
 EOF
 
-
-
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %if %mdkversion < 200900
 %post -n %{lib_name} -p /sbin/ldconfig
 %endif
@@ -107,6 +109,9 @@ rm -rf $RPM_BUILD_ROOT
 %if %mdkversion < 200900
 %postun -n %{lib_name} -p /sbin/ldconfig
 %endif
+
+%clean
+rm -rf %{buildroot}
 
 %files -n %{name}-player
 %defattr(-, root, root)
@@ -132,5 +137,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/lib*.so
 %{_libdir}/lib*.la
 %{_datadir}/aclocal/smpeg.m4
-
-
