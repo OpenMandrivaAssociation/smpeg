@@ -5,7 +5,7 @@
 Summary:	SDL MPEG Library
 Name:		smpeg
 Version:	0.4.4
-Release:	%mkrel 38
+Release:	%mkrel 39
 License:	LGPL
 Group:		Video
 URL:		http://icculus.org/smpeg/
@@ -15,6 +15,7 @@ Patch1:		smpeg-0.4.4-libsupc++.patch
 Patch2:		smpeg-0.4.4-fix-m4.patch
 Patch3:		smpeg-0.4.4-fix-underquoted-calls.patch
 Patch4:		smpeg-0.4.4-fix-header.patch
+Patch5:		smpeg-0.4.4-format_not_a_string_literal_and_no_format_arguments.diff
 BuildRequires:	automake1.4
 BuildRequires:	esound-devel
 BuildRequires:	gtk+-devel
@@ -72,6 +73,7 @@ This package contains a MPEG player based on %{name}.
 %patch2 -p0
 %patch3 -p1 -b .underquoted
 %patch4 -p1 -b .header
+%patch5 -p0 -b .format_not_a_string_literal_and_no_format_arguments
 # needed by Patch1
 automake-1.4 --foreign
 
