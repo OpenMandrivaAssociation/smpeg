@@ -5,7 +5,7 @@
 Summary:	SDL MPEG Library
 Name:		smpeg
 Version:	0.4.4
-Release:	%mkrel 39
+Release:	%mkrel 40
 License:	LGPL
 Group:		Video
 URL:		http://icculus.org/smpeg/
@@ -18,7 +18,6 @@ Patch4:		smpeg-0.4.4-fix-header.patch
 Patch5:		smpeg-0.4.4-format_not_a_string_literal_and_no_format_arguments.diff
 BuildRequires:	automake1.4
 BuildRequires:	esound-devel
-BuildRequires:	gtk+-devel
 BuildRequires:	Mesa-common-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	SDL-devel
@@ -75,10 +74,12 @@ This package contains a MPEG player based on %{name}.
 %patch4 -p1 -b .header
 %patch5 -p0 -b .format_not_a_string_literal_and_no_format_arguments
 # needed by Patch1
+aclocal-1.4
 automake-1.4 --foreign
+autoconf
 
 %build
-%configure
+%configure --disable-gtk-player
 # (gc) this sucking rpath thing...
 perl -pi -e 's/finalize_rpath="\$rpath"/finalize_rpath=/' libtool
 make
@@ -91,18 +92,6 @@ rm -rf %{buildroot}
 %makeinstall
 
 %multiarch_binaries %{buildroot}%{_bindir}/smpeg-config
-
-mkdir -p %{buildroot}%{_datadir}/applications
-cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
-[Desktop Entry]
-Name=Gtv Mpeg player
-Comment=Gtv Mpeg video player
-Exec=%{_bindir}/gtv
-Icon=video_section
-Terminal=false
-Type=Application
-Categories=X-MandrivaLinux-Multimedia-Video;AudioVideo;Video;Player;
-EOF
 
 %if %mdkversion < 200900
 %post -n %{lib_name} -p /sbin/ldconfig
@@ -119,10 +108,8 @@ rm -rf %{buildroot}
 %defattr(-, root, root)
 %doc README
 %{_bindir}/plaympeg
-%{_bindir}/gtv
 %{_bindir}/glmovie
 %{_mandir}/*/*
-%{_datadir}/applications/mandriva-%{name}.desktop
 
 %files -n %{lib_name}
 %defattr(-,root,root)
