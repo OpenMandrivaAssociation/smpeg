@@ -16,6 +16,10 @@ Patch2:		smpeg-0.4.4-fix-m4.patch
 Patch3:		smpeg-0.4.4-fix-underquoted-calls.patch
 Patch4:		smpeg-0.4.4-fix-header.patch
 Patch5:		smpeg-0.4.4-format_not_a_string_literal_and_no_format_arguments.diff
+# (misc) since aclocal requires libgtk1-devel to regenerate the 
+# configure script and others, we need to remove them from the file 
+# with a axe. 
+Patch6:     smpeg-0.4.4-remove-gtk1.patch
 BuildRequires:	automake1.4
 BuildRequires:	esound-devel
 BuildRequires:	Mesa-common-devel
@@ -73,6 +77,8 @@ This package contains a MPEG player based on %{name}.
 %patch3 -p1 -b .underquoted
 %patch4 -p1 -b .header
 %patch5 -p0 -b .format_not_a_string_literal_and_no_format_arguments
+%patch6 -p0
+
 # needed by Patch1
 aclocal-1.4
 automake-1.4 --foreign
