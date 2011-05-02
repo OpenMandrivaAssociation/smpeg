@@ -20,9 +20,10 @@ Patch5:		smpeg-0.4.4-format_not_a_string_literal_and_no_format_arguments.diff
 # configure script and others, we need to remove them from the file 
 # with a axe. 
 Patch6:     smpeg-0.4.4-remove-gtk1.patch
-BuildRequires:	automake1.4
+Patch7:		smpeg-0.4.4-automake.patch
 BuildRequires:	esound-devel
 BuildRequires:	Mesa-common-devel
+BuildRequires:	libstdc++-static-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	SDL-devel
 BuildRequires:	slang-devel
@@ -78,14 +79,14 @@ This package contains a MPEG player based on %{name}.
 %patch4 -p1 -b .header
 %patch5 -p0 -b .format_not_a_string_literal_and_no_format_arguments
 %patch6 -p0
+%patch7 -p1
 
 # needed by Patch1
-aclocal-1.4
-automake-1.4 --foreign
-autoconf
+touch NEWS AUTHORS ChangeLog
+autoreconf -fi
 
 %build
-%configure --disable-gtk-player
+%configure2_5x
 # (gc) this sucking rpath thing...
 perl -pi -e 's/finalize_rpath="\$rpath"/finalize_rpath=/' libtool
 make
@@ -95,7 +96,7 @@ rm -rf %{buildroot}
 
 #make prefix=%{buildroot}/%{_prefix} install
 
-%makeinstall
+%makeinstall_std
 
 %multiarch_binaries %{buildroot}%{_bindir}/smpeg-config
 
