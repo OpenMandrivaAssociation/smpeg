@@ -5,7 +5,7 @@
 Summary:	SDL MPEG Library
 Name:		smpeg
 Version:	0.4.4
-Release:	%mkrel 42
+Release:	%mkrel 43
 License:	LGPL
 Group:		Video
 URL:		http://icculus.org/smpeg/
@@ -126,7 +126,7 @@ rm -rf %{buildroot}
 %defattr(-, root, root)
 %doc CHANGES COPYING README
 %{_bindir}/smpeg-config
-%multiarch %{multiarch_bindir}/smpeg-config
+%{multiarch_bindir}/smpeg-config
 %{_includedir}/*
 %{_libdir}/lib*.a
 %{_libdir}/lib*.so
