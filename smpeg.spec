@@ -1,11 +1,13 @@
 %define	lib_name_orig	libsmpeg
+# this is really the API, the major is 0
 %define	lib_major	0.4
 %define	lib_name	%mklibname %name %{lib_major}
+%define	develname	%mklibname %name -d
 
 Summary:	SDL MPEG Library
 Name:		smpeg
 Version:	0.4.4
-Release:	%mkrel 43
+Release:	44
 License:	LGPL
 Group:		Video
 URL:		http://icculus.org/smpeg/
@@ -28,7 +30,6 @@ BuildRequires:	ncurses-devel
 BuildRequires:	SDL-devel
 BuildRequires:	slang-devel
 BuildRequires:	zlib-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 SMPEG is based on UC Berkeley's mpeg_play software MPEG decoder and SPLAY,
@@ -46,17 +47,19 @@ Provides:	%{name} = %{version}-%{release}
 This package contains the library needed to run programs dynamically
 linked with %{name}.
 
-%package -n	%{lib_name}-devel
+%package -n	%{develname}
 Summary:	Headers for developing programs that will use %{name}
 Group:		Development/C
 Requires:	%{lib_name} = %{version}
 Provides:	%{lib_name_orig}-devel = %{version}-%{release}
 Obsoletes:	%{name}-devel
 Provides:	%{name}-devel = %{version}-%{release}
+Provides:	%{lib_name}-devel
+Obsoletes:	%{mklibname %{name} %{lib_major} -d}
 #gw smpeg-config calls sdl-config
 Requires:	SDL-devel
 
-%description -n	%{lib_name}-devel
+%description -n	%{develname}
 This package contains the headers that programmers will need to develop
 applications which will use %{name}.
 
@@ -94,8 +97,6 @@ make
 %install
 rm -rf %{buildroot}
 
-#make prefix=%{buildroot}/%{_prefix} install
-
 %makeinstall_std
 
 %multiarch_binaries %{buildroot}%{_bindir}/smpeg-config
@@ -123,7 +124,7 @@ rm -rf %{buildroot}
 %doc README
 %{_libdir}/lib*.so.*
 
-%files -n %{lib_name}-devel
+%files -n %{develname}
 %defattr(-, root, root)
 %doc CHANGES COPYING README
 %{_bindir}/smpeg-config
