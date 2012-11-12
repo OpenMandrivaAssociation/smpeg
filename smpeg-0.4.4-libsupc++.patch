@@ -1,0 +1,18 @@
+--- smpeg-0.4.4/Makefile.am.libsupc++	2001-04-04 16:28:14.000000000 -0400
++++ smpeg-0.4.4/Makefile.am	2002-07-29 10:47:35.000000000 -0400
+@@ -36,9 +36,14 @@
+         -release $(LT_RELEASE)	\
+ 	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
+ 
++# (gb) hackish to force link with gcc so that we don't get a
++# dependence on libstdc++.so.*. Do add necessary supc++ hereunder.
++CXXLD = $(CC)
++
+ libsmpeg_la_LIBADD =		\
+ 	audio/libaudio.la	\
+-	video/libvideo.la
++	video/libvideo.la	\
++	-lsupc++ -lgcc_s
+ 
+ EXTRA_DIST =		\
+ 	CHANGES		\
