@@ -23,7 +23,7 @@ Patch5:		smpeg-0.4.4-format_not_a_string_literal_and_no_format_arguments.diff
 # with a axe.
 Patch6:		smpeg-0.4.4-remove-gtk1.patch
 Patch7:		smpeg-0.4.4-automake.patch
-BuildRequires:	pkgconfig(esound)
+#BuildRequires:	pkgconfig(esound)
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	libstdc++-static-devel
