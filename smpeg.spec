@@ -7,7 +7,7 @@
 Summary:	SDL MPEG Library
 Name:		smpeg
 Version:	0.4.4
-Release:	50
+Release:	51
 License:	LGPL
 Group:		Video
 URL:		http://icculus.org/smpeg/
