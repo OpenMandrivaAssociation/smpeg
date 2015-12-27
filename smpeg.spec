@@ -4,6 +4,9 @@
 %define	lib_name	%mklibname %{name} %{lib_major}
 %define	develname	%mklibname %{name} -d
 
+%define _disable_lto 1
+%define _disable_rebuild_configure 1
+
 Summary:	SDL MPEG Library
 Name:		smpeg
 Version:	0.4.4
