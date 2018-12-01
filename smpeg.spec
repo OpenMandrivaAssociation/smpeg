@@ -6,11 +6,12 @@
 
 %define _disable_lto 1
 %define _disable_rebuild_configure 1
+%global optflags %{optflags} -Wno-c++11-narrowing
 
 Summary:	SDL MPEG Library
 Name:		smpeg
 Version:	0.4.4
-Release:	59
+Release:	60
 License:	LGPL
 Group:		Video
 URL:		http://icculus.org/smpeg/
