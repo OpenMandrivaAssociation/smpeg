@@ -11,7 +11,7 @@
 Summary:	SDL MPEG Library
 Name:		smpeg
 Version:	0.4.4
-Release:	60
+Release:	61
 License:	LGPL
 Group:		Video
 URL:		http://icculus.org/smpeg/
@@ -92,10 +92,10 @@ autoreconf -fi
 %configure2_5x --disable-static
 # (gc) this sucking rpath thing...
 perl -pi -e 's/finalize_rpath="\$rpath"/finalize_rpath=/' libtool
-make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 #multiarch_binaries %{buildroot}%{_bindir}/smpeg-config
 
