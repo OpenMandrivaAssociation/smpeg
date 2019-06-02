@@ -97,7 +97,7 @@ make
 %install
 %makeinstall_std
 
-%multiarch_binaries %{buildroot}%{_bindir}/smpeg-config
+#multiarch_binaries %{buildroot}%{_bindir}/smpeg-config
 
 %files -n %{name}-player
 %doc README
@@ -112,7 +112,7 @@ make
 %files -n %{develname}
 %doc CHANGES COPYING README
 %{_bindir}/smpeg-config
-%{multiarch_bindir}/smpeg-config
+#{multiarch_bindir}/smpeg-config
 %{_includedir}/*
 %{_libdir}/lib*.so
 %{_datadir}/aclocal/smpeg.m4
