@@ -16,7 +16,7 @@ Version:	0.4.5
 Release:	2
 License:	LGPL
 Group:		Video
-URL:		http://icculus.org/smpeg/
+URL:		https://icculus.org/smpeg/
 Source0:	%{name}-%{version}.tar.xz
 Patch0:		smpeg-0.4.5-libsupc++.patch
 Patch1:		smpeg-0.4.5-fix-header.patch
