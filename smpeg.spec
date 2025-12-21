@@ -22,6 +22,11 @@ Patch0:		smpeg-0.4.5-libsupc++.patch
 Patch1:		smpeg-0.4.5-fix-header.patch
 Patch2:		smpeg-0.4.4-format_not_a_string_literal_and_no_format_arguments.diff
 Patch3:		smpeg-0.4.5-link.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	libstdc++-static-devel
